@@ -1,0 +1,12 @@
+body.doorstep {
+	.login {
+		margin-right: 20px;
+	}
+	.login, .register {
+		float: left;
+		width: 470px;
+		h2, input {
+			margin-bottom: 20px;
+		}
+	}
+}

@@ -1,0 +1,23 @@
+/*----------------------------------------------------------------------------------------
+ *
+ * styles.scss 
+ * the final frontier
+ *
+ *----------------------------------------------------------------------------------------
+ */
+/* global styles */
+body {
+  padding: 20px 0 40px 0; }
+  body .container-narrow {
+    margin: 0 auto;
+    width: 960px; }
+
+/* structure styles */
+/* page styles */
+body.doorstep .login {
+  margin-right: 20px; }
+body.doorstep .login, body.doorstep .register {
+  float: left;
+  width: 470px; }
+  body.doorstep .login h2, body.doorstep .login input, body.doorstep .register h2, body.doorstep .register input {
+    margin-bottom: 20px; }
