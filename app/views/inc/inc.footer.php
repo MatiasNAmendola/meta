@@ -6,7 +6,7 @@
    	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
    	
    	<!-- Custom Scripts -->
-   	<script src="<?php echo Config::site_url ?>/lib/js/validation.js"></script>
+   	<script src="<?php echo Config::site_url ?>/lib/js/forms.js"></script>
    	<script src="<?php echo Config::site_url ?>/lib/js/scripts.js"></script>
   </body>
 </html>

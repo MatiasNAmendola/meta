@@ -9,12 +9,19 @@ class Config {
 	model_dir					=	'/Users/brianmccoy/Projects/meta/app/models',
 	view_dir					=	'/Users/brianmccoy/Projects/meta/app/views',
 	site_title					=	'Meta',
-	dev_mode					=	'on';
+	dev_mode					=	'on',
+	db_host						=	'localhost',
+	db_name						=	'meta',
+	db_user						=	'root',
+	db_pass						=	'root';
 }
 
 if(Config::dev_mode == 'on') {
 	error_reporting(E_ALL);
 }
+
+// include our PDO helper class, smplPDO
+include Config::model_dir.'/smplPDO.php';
 
 // include the master controller
 include Config::controller_dir.'/controller.php';
