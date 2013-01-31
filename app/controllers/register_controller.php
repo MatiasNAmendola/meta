@@ -3,6 +3,10 @@ class Register_Controller {
 	public function __construct() {
 		if($_POST) {
 			
+			// include the User model
+			include Config::get_dir('model').'/user_model.php';
+			$user_model = new User_Model;
+			
 			$formData = array(
 				'reg_email'					=> clean($_POST['reg_email']),
 				'reg_password'				=> clean($_POST['reg_password']),
@@ -21,6 +25,21 @@ class Register_Controller {
 			);
 			
 			$results = $val->check($formData, $rules);
+			
+			// check to see if the email is already taken
+			$user_exists = $user_model->userExists($formData['reg_email']);
+			
+			if($user_exists == 1) {
+			
+				// we need to break down our JSON and add one more thing
+				// to tip the front end that this email is taken
+				
+				$val_array = json_decode($results[0]);
+				$val_array['email_taken'] = 1;
+				
+				$results[0] = json_encode($val_array);
+			
+			}
 			
 			// output the JSON for the front end to display the results
 			echo $results[0];

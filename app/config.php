@@ -47,14 +47,14 @@ if(Config::dev_mode == 'on') {
 // include some basic functions
 include Config::get_dir('app') . '/functions.php';
 
-// include our PDO helper class, smplPDO
-include Config::get_dir('model') . '/smplPDO.php';
-
 // include the master controller
 include Config::get_dir('controller') . '/controller.php';
 
 // include the messenger class
 include Config::get_dir('controller') . '/messenger.php';
+
+// include the Master_Model class
+include Config::get_dir('model') . '/master_model.php';
 
 // include the router
 include Config::get_dir('controller') . '/router.php';

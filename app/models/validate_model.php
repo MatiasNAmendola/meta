@@ -45,6 +45,9 @@ class Validate {
     	
     	}
     	
+    	// pass the fail variable to the json
+    	$results['fail'] = $fail;
+    	
     	// encode the results
     	$results = json_encode($results);
     	$output = array($results, $fail);
