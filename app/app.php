@@ -10,8 +10,8 @@ $router = new Router($_SERVER['REQUEST_URI']);
 $master_controller = $router->LoadController();
 
 // include our controller
-if(is_file(Config::controller_dir.'/'.strtolower($master_controller).'.php')) {
-	include Config::controller_dir.'/'.strtolower($master_controller).'.php';
+if(is_file(Config::get_dir('controller') . '/'.strtolower($master_controller).'.php')) {
+	include Config::get_dir('controller') . '/'.strtolower($master_controller).'.php';
 	
 	// instantiate the controller
 	$controller = new $master_controller;
