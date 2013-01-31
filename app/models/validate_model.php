@@ -21,9 +21,6 @@ class Validate {
     	
     		// key = field name
     		// data = value
-    		
-    		$result = array($key);
-    		
     		for($x=0;$x<count($rules[$key]);$x++) {
     			
     			if(is_array($rules[$key][$x])) {
@@ -33,9 +30,7 @@ class Validate {
     					$fail = 1;
     				}
     				
-    				$test_result = array($rules[$key][$x][0], $test);
-    				
-    				array_push($result, $test_result);
+    				$results[$key][$rules[$key][$x][0]] = $test;
     				
     			} else {
     				$test = $this->checkRule($formData, $key, $rules[$key][$x]);
@@ -44,13 +39,9 @@ class Validate {
     					$fail = 1;
     				}
     				
-    				$test_result = array($rules[$key][$x], $test);
-    				array_push($result, $test_result);
+    				$results[$key][$rules[$key][$x]] = $test;	
     			}
-    			
     		}
-    		
-    		array_push($results, $result);
     	
     	}
     	
