@@ -16,6 +16,28 @@ class Config {
 	db_name						=	'meta',
 	db_user						=	'root',
 	db_pass						=	'root';
+
+	/**
+	 * @param, $dir, str
+	 * The directory name you need.
+	 * @return, str
+	 * The absolute path on this system.
+	 */
+	public static function get_dir($dir) {
+		
+		$app_dir = dirname(__FILE__);
+
+		$dirs = array(
+			'site'			=>	dirname($app_dir),
+			'app'			=>	$app_dir,
+			'controller'	=>	$app_dir . '/controllers',
+			'model'			=>	$app_dir . '/models',
+			'view'			=>	$app_dir . '/views',
+		);
+
+		return (array_key_exists($dir, $dirs)) ? $dirs[$dir] : null;
+
+	}
 }
 
 if(Config::dev_mode == 'on') {
@@ -23,18 +45,18 @@ if(Config::dev_mode == 'on') {
 }
 
 // include some basic functions
-include Config::app_dir.'/functions.php';
+include Config::get_dir('app') . '/functions.php';
 
 // include our PDO helper class, smplPDO
-include Config::model_dir.'/smplPDO.php';
+include Config::get_dir('model') . '/smplPDO.php';
 
 // include the master controller
-include Config::controller_dir.'/controller.php';
+include Config::get_dir('controller') . '/controller.php';
 
 // include the messenger class
-include Config::controller_dir.'/messenger.php';
+include Config::get_dir('controller') . '/messenger.php';
 
 // include the router
-include Config::controller_dir.'/router.php';
+include Config::get_dir('controller') . '/router.php';
 
 ?>

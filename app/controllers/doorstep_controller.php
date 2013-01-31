@@ -1,18 +1,20 @@
 <?php
 class Doorstep_Controller extends Master_Controller {
 	
+	public $page_title;
+	public $body_class = 'doorstep';
+	
 	public function __construct() {
 		
-		$page_title =  $this->GetPageTitle('home');
-		$body_class = 'doorstep';
+		$this->page_title =  $this->GetPageTitle('home');
 		
-		include Config::view_dir.'/inc/inc.header.php';
+		include Config::get_dir('view') . '/inc/inc.header.php';
 		
-		include Config::view_dir.'/doorstep_view.php';
+		include Config::get_dir('view') . '/doorstep_view.php';
 		
-		include Config::view_dir.'/inc/inc.footer.php';
+		include Config::get_dir('view') . '/inc/inc.footer.php';
 			
-	}	
-	
+	}
+
 }
 ?>

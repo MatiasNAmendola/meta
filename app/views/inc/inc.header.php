@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><?php echo $page_title; ?></title>
+		<title><?php echo $this->page_title; ?></title>
 		
 		<!-- styles -->
 		<link href="<?php echo Config::site_url ?>/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -12,7 +12,7 @@
 		  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 	</head>
-	<body class="<?php echo $body_class; ?>">
+	<body class="<?php echo $this->body_class; ?>">
 	
 	<div class="container-narrow">
 		<div class="masthead">

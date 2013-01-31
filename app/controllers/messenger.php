@@ -12,11 +12,11 @@ class Messenger {
 		
 		$page_title =  Master_Controller::GetPageTitle('error_404');
 		
-		include Config::view_dir.'/inc/inc.header.php';
+		include Config::get_dir('view') . '/inc/inc.header.php';
 		
-		include Config::view_dir.'/messenger/error_view.php';
+		include Config::get_dir('view') . '/messenger/error_view.php';
 		
-		include Config::view_dir.'/inc/inc.footer.php';
+		include Config::get_dir('view') . '/inc/inc.footer.php';
 			
 	}
 }
