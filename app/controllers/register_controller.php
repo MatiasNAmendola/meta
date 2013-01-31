@@ -10,7 +10,7 @@ class Register_Controller {
 			);
 			
 			/* Validation */
-			include Config::model_dir.'/validate_model.php';
+			include Config::get_dir('model') . '/validate_model.php';
 			$val = new Validate;
 			
 			/* Define the Rules */
