@@ -29,7 +29,7 @@ class Register_Controller {
 			if($results[1] != 1) {
 				// no errors, execute the transaction
 				
-				
+				// WE NEED SOME MODEL SHIT
 				
 			}
 			

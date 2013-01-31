@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="span12">
-		<p class="lead">Welcome to <strong><?php echo Config::site_title; ?></strong>, a client credential management system. It's been designed from the ground up to make ease of saving your client's sensitive information and then finding it again later.</p>
+		<p class="lead">Find your information with ease.</p>	
 	</div>
 </div>
 <div class="row">

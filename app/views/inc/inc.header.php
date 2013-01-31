@@ -14,13 +14,26 @@
 	</head>
 	<body class="<?php echo $body_class; ?>">
 	
+	<?php $cur_user = ""; ?>
+	
 	<div class="container-narrow">
-		<div class="masthead">
-			<ul class="nav nav-pills pull-right">
-				<li class="active"><a href="<?php echo Config::site_url; ?>/index.php">Home</a></li>
-				<li><a href="<?php echo Config::site_url; ?>/about/">About</a></li>
-			</ul>
-			<h2 class="muted">Meta</h2>
-		</div><!-- / masthead -->
+		
+		<header class="row">
+		
+			<div class="logo">
+				<span class="ninjato">Ninjato</span> | <span class="meta">Meta</span>
+			</div>
+			
+			<div class="login">
+				<form class="form-inline">
+					
+					<input type="text" name="login_email" id="login_email" placeholder="Email" class="input-medium">
+					<input type="password" name="login_password" id="login_password" placeholder="Password" class="input-medium">
+					<button type="submit" class="btn">Log in</button>
+					
+				</form>
+			</div>
+			
+		</header>
 		
 		<hr>
