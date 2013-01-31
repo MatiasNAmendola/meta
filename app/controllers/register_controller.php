@@ -4,72 +4,37 @@ class Register_Controller {
 		if($_POST) {
 			
 			$formData = array(
-				$_POST['reg_email'],
-				$_POST['reg_password'],
-				$_POST['reg_password2']
+				'reg_email'					=> clean($_POST['reg_email']),
+				'reg_password'				=> clean($_POST['reg_password']),
+				'reg_password2'				=> clean($_POST['reg_password2'])
 			);
-			
-			// include & start the Sanitize class 
-			include Config::model_dir.'/sanitize_model.php';
-			
-			$sanitize = new Sanitize;
-			
-			$formData = $sanitize->clean($formData);
 			
 			/* Validation */
-			include Config::model_dir.'/validation_model.php';
+			include Config::model_dir.'/validate_model.php';
+			$val = new Validate;
 			
-			$validate = new Validate;
-			
+			/* Define the Rules */
 			$rules = array(
-				array('is_empty', 'is_email'),
-				'is_empty',
-				array(array('is_matchTo', 1))
+				'reg_email'					=> array('is_empty', 'is_email'),
+				'reg_password'				=> array('is_empty'),
+				'reg_password2'				=> array( array('is_matchTo', 'reg_password') )
 			);
 			
-			$test = $validate->check($formData, $rules);
+			$results = $val->check($formData, $rules);
 			
-			if(empty($reg_email)) {
-				$email_empty = 1;
-				$error = 1;
+			// output the JSON for the front end to display the results
+			echo $results[0];
+			
+			// check if there were errors or not
+			if($results[1] != 1) {
+				// no errors, execute the transaction
+				
+				
+				
 			}
-			
-			if(!filter_var($reg_email, FILTER_VALIDATE_EMAIL)) {
-				$email_valid = 1;
-				$error = 1;
-			}
-			
-			if(empty($reg_password)) {
-				$password_empty = 1;				
-				$error = 1;
-			}
-			
-			if(empty($reg_password2)) {
-				$password2_empty = 1;
-				$error = 1;
-			}
-			
-			if($reg_password != $reg_password2) {
-				$password_match = 1;				
-				$error = 1;
-			}
-			
-			$status = array(
-				'email_empty'			=>	$email_empty,
-				'email_valid'			=>	$email_valid,
-				'password_empty'		=>	$password_empty,
-				'password2_empty'		=>	$password2_empty,
-				'password_match'		=>	$password_match
-			);
-			
-			//echo json_encode($status);
 			
 			
 		}		
-	}
-	
-	private function validate($post_data) {
-		//return print_r($_POST);
 	}
 }
 ?>

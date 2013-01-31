@@ -1,10 +1,12 @@
 <?php
 
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+
 class Config {
 	const
 	site_url					=	'http://meta:8888',
 	site_dir					=	'/Users/brianmccoy/Projects/meta',
-	app_dir						=	'/Users/brianmccoy/Projects/meta',
+	app_dir						=	'/Users/brianmccoy/Projects/meta/app',
 	controller_dir				=	'/Users/brianmccoy/Projects/meta/app/controllers',
 	model_dir					=	'/Users/brianmccoy/Projects/meta/app/models',
 	view_dir					=	'/Users/brianmccoy/Projects/meta/app/views',
@@ -19,6 +21,9 @@ class Config {
 if(Config::dev_mode == 'on') {
 	error_reporting(E_ALL);
 }
+
+// include some basic functions
+include Config::app_dir.'/functions.php';
 
 // include our PDO helper class, smplPDO
 include Config::model_dir.'/smplPDO.php';
