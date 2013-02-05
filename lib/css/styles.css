@@ -7,27 +7,66 @@
  */
 /* global styles */
 body {
-  padding: 20px 0 40px 0; }
+  padding: 80px 0 40px 0; }
   body .container-narrow {
     margin: 0 auto;
     width: 960px; }
 
-/* structure styles */
-.logo {
-  float: left;
-  margin-top: 17px;
-  margin-left: 20px; }
-  .logo .ninjato {
-    font-size: 20px;
-    font-weight: bold; }
-  .logo .meta {
-    font-size: 20px; }
+form {
+  margin: 0; }
 
-.login {
-  float: right;
-  margin-top: 10px;
-  width: 390px; }
+/* structure styles */
+header {
+  background: white;
+  border-bottom: #bbbbbb 1px solid;
+  height: 50px; }
+  header .close {
+    margin-top: -3px; }
+  header .logo {
+    float: left;
+    margin-top: 14px;
+    margin-left: 20px; }
+    header .logo .ninjato {
+      font-size: 20px;
+      font-weight: bold; }
+    header .logo .meta {
+      font-size: 20px; }
+  header .nav {
+    right: 0;
+    position: absolute;
+    top: 9px; }
+    header .nav li {
+      margin-right: 25px;
+      position: relative; }
+  header .meta-nav-box {
+    background: white;
+    border: 1px solid #bbbbbb;
+    border-top: none;
+    box-shadow: -5px 5px 5px #eeeeee;
+    display: none;
+    position: absolute;
+    top: 42px;
+    right: 0;
+    width: 450px; }
+    header .meta-nav-box .meta-nav-box-title {
+      background: #f1f1f1;
+      border-bottom: 1px solid #bbbbbb;
+      padding: 10px; }
+    header .meta-nav-box .meta-nav-box-body {
+      padding: 10px; }
+      header .meta-nav-box .meta-nav-box-body input {
+        width: 400px; }
+      header .meta-nav-box .meta-nav-box-body .alert {
+        margin-bottom: 9px;
+        margin-top: 9px;
+        width: 360px; }
+        header .meta-nav-box .meta-nav-box-body .alert:first-child {
+          margin-top: 0; }
 
 /* page styles */
-body.doorstep h2 {
-  margin-bottom: 15px; }
+body.doorstep .ninjato-sword {
+  display: block;
+  margin: 0 auto; }
+body.doorstep .ninjato-description {
+  font-size: 15px;
+  text-align: center; }

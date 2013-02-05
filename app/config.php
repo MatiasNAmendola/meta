@@ -33,6 +33,7 @@ class Config {
 			'controller'	=>	$app_dir . '/controllers',
 			'model'			=>	$app_dir . '/models',
 			'view'			=>	$app_dir . '/views',
+			'etc'			=>  $app_dir . '/etc'
 		);
 
 		return (array_key_exists($dir, $dirs)) ? $dirs[$dir] : null;
@@ -42,21 +43,23 @@ class Config {
 
 if(Config::dev_mode == 'on') {
 	error_reporting(E_ALL);
+	
+	include Config::get_dir('etc').'/ChromePhp.php';
 }
 
-// include some basic functions
-include Config::get_dir('app') . '/functions.php';
+// include_once some basic functions
+include_once Config::get_dir('app') . '/functions.php';
 
-// include the master controller
-include Config::get_dir('controller') . '/controller.php';
+// include_once the master controller
+include_once Config::get_dir('controller') . '/controller.php';
 
-// include the messenger class
-include Config::get_dir('controller') . '/messenger.php';
+// include_once the messenger class
+include_once Config::get_dir('controller') . '/messenger.php';
 
-// include the Master_Model class
-include Config::get_dir('model') . '/master_model.php';
+// include_once the Master_Model class
+include_once Config::get_dir('model') . '/master_model.php';
 
-// include the router
-include Config::get_dir('controller') . '/router.php';
+// include_once the router
+include_once Config::get_dir('controller') . '/router.php';
 
 ?>

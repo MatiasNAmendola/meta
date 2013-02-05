@@ -45,6 +45,10 @@ class Validate {
     	
     	}
     	
+    	if(!isset($fail)) {
+    		$fail = "";
+    	}
+    	
     	// pass the fail variable to the json
     	$results['fail'] = $fail;
     	
