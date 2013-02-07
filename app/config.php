@@ -1,7 +1,5 @@
 <?php
 
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-
 class Config {
 	const
 	site_url					=	'http://meta:8888',
@@ -50,16 +48,23 @@ if(Config::dev_mode == 'on') {
 // include_once some basic functions
 include_once Config::get_dir('app') . '/functions.php';
 
-// include_once the master controller
-include_once Config::get_dir('controller') . '/controller.php';
+function __autoload($class_name) {
+	$directories = array('controllers', 'etc', 'models');
+	$file = $class_name.'.php';
+	
+	foreach($directories as $directory) {
+		if(is_file(Config::app_dir . '/' . $directory . '/' . $file)) {
+			include Config::app_dir . '/' . $directory . '/' . $file;
+		}
+	}
+}
 
-// include_once the messenger class
-include_once Config::get_dir('controller') . '/messenger.php';
+// check to see if we are logged in
+if(isset($_SESSION['meta_token'])) {
+	
+	$meta_user_obj = new User;
+	$meta_user = $meta_user_obj->meta_user($_SESSION['meta_token']);
 
-// include_once the Master_Model class
-include_once Config::get_dir('model') . '/master_model.php';
-
-// include_once the router
-include_once Config::get_dir('controller') . '/router.php';
+}
 
 ?>

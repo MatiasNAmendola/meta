@@ -1,6 +1,6 @@
 <?php
-class Login_Controller {
-	
+class Login {
+
 	private $user_model;
 	private $form_data;
 	
@@ -12,8 +12,7 @@ class Login_Controller {
 			$results = array();
 			
 			// include the User model
-			include Config::get_dir('model').'/user_model.php';
-			$this->user_model = new User_Model;
+			$this->user_model = new User;
 			
 			$this->formData = array(
 				'login_email'		=> clean($_POST['login_email']),
@@ -24,22 +23,25 @@ class Login_Controller {
 			
 				$user = $this->user_model->get_user($this->formData['login_email']);
 			
-				/* secure the password they entered */
-				$temp_pass = hash('sha256', $this->formData['login_password'] . $user['salt']);
+				/* secure the password based on the salt */
+				$temp_pass = $this->user_model->temp_password($this->formData['login_password'], $user['salt']);
 				
-				for($round=0;$round<65536;$round++) {
-					$temp_pass = hash('sha256', $temp_pass . $user['salt']);
-				}
-				
+				$results['password'] = $this->formData['login_password'];
 				if($temp_pass === $user['password']) {
 					
-					$_SESSION['meta_user'] = $user;
+					// add the secure token to the database
+					$token = $this->user_model->secure_token($this->formData['login_email']);
+					
+					$_SESSION['meta_token'] = $token;
 					
 					$results['success'] = 1;
 					
 				} else {
-					$results['success'] = 0;
+					$results['success'] = 'FAIL';
 				}
+				
+				ChromePhp::log($temp_pass);
+				ChromePhp::log($user['password']);
 				
 				
 				

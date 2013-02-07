@@ -17,4 +17,12 @@ function clean($data) {
 	return $data;       
 }
 
+function load_css($url) {
+	echo '<link rel="stylesheet" href="'.$url.'">'."\n";
+}
+
+function load_js($url) {
+	echo '<script src="'.$url.'"></script>'."\n";
+}
+
 ?>

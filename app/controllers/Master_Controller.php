@@ -2,13 +2,7 @@
 abstract class Master_Controller {
 
 	protected $page_title;
-	
-	public function __construct() {
-		global $site_settings;
-		echo $site_settings;
-		echo 'hi';
-		$this->site_settings = $site_settings;
-	}
+	public $meta_user;
 	
 	public function GetPageTitle($page_slug) {
 		

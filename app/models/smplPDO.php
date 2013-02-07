@@ -112,6 +112,8 @@ class smplPDO extends PDO {
 	 * @var mixed
 	 */
 	public $result=null;
+	
+	public static $instance=null;
 		
 	/**
 	 * Class Constructor. Establish a database connection with PDO. 
@@ -161,6 +163,13 @@ class smplPDO extends PDO {
 			// You may prefer to fail silently on a production server.
 			exit( $e->getMessage() );
 		}
+	}
+	
+	public static function get_instance() {
+		if(!isset(self::$instance)) {
+			self::$instance = new smplPDO("mysql:host=localhost;dbname=meta", 'root', 'root');
+		}
+		return self::$instance;
 	}
 	
 	/**

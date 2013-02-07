@@ -39,7 +39,7 @@ class Router {
 	}
 	
 	public function LoadController() {
-		return $this->page.'_Controller';
+		return $this->page;
 	}
 	
 }

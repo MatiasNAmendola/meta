@@ -1,6 +1,10 @@
 <?php
 
-class Email_Verification_Model extends Master_Model {
+class Email_Verification {
+
+	public function __construct() {
+		$this->dbh = smplPDO::get_instance();
+	}
 	
 	public function setup($email) {
 	
@@ -15,7 +19,7 @@ class Email_Verification_Model extends Master_Model {
 		);
 		
 		// insert it into the database
-		$this->db->insert('email_verification', $query_params);
+		$this->dbh->insert('email_verification', $query_params);
 		
 		return $code;
 		

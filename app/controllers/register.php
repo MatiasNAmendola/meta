@@ -1,15 +1,15 @@
 <?php
-class Register_Controller {
+class Register {
 	
+	public $dbh;
 	private $user_model;
 	private $form_data;
 	
 	public function __construct() {
-		if($_POST) {
+		 if($_POST) {
 			
 			// include the User model
-			include Config::get_dir('model').'/user_model.php';
-			$this->user_model = new User_Model;
+			$this->user_model = new User;
 			
 			$this->formData = array(
 				'reg_email'		=> clean($_POST['reg_email']),
@@ -33,8 +33,7 @@ class Register_Controller {
 				
 				// we need to set up account activation for their email
 				// use the email_verification_model
-				include Config::get_dir('model').'/email_verification_model.php';
-				$ev_model = new Email_Verification_Model;
+				$ev_model = new Email_Verification;
 				
 				// setup will create a verification code, return it, and save it to the db
 				$ev_setup = $ev_model->setup($user_data['email']);
@@ -55,7 +54,6 @@ class Register_Controller {
 	private function doValidation() {
 	
 		/* Validation */
-		include Config::get_dir('model') . '/validate_model.php';
 		$val = new Validate;
 		
 		/* Define the Rules */
