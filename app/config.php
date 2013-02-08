@@ -48,23 +48,4 @@ if(Config::dev_mode == 'on') {
 // include_once some basic functions
 include_once Config::get_dir('app') . '/functions.php';
 
-function __autoload($class_name) {
-	$directories = array('controllers', 'etc', 'models');
-	$file = $class_name.'.php';
-	
-	foreach($directories as $directory) {
-		if(is_file(Config::app_dir . '/' . $directory . '/' . $file)) {
-			include Config::app_dir . '/' . $directory . '/' . $file;
-		}
-	}
-}
-
-// check to see if we are logged in
-if(isset($_SESSION['meta_token'])) {
-	
-	$meta_user_obj = new User;
-	$meta_user = $meta_user_obj->meta_user($_SESSION['meta_token']);
-
-}
-
 ?>

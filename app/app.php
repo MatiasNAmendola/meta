@@ -3,6 +3,25 @@ session_start();
 
 include 'config.php';
 
+function __autoload($class_name) {
+	$directories = array('controllers', 'etc', 'models');
+	$file = $class_name.'.php';
+	
+	foreach($directories as $directory) {
+		if(is_file(Config::app_dir . '/' . $directory . '/' . $file)) {
+			include Config::app_dir . '/' . $directory . '/' . $file;
+		}
+	}
+}
+
+// check to see if we are logged in
+if(isset($_SESSION['meta_token'])) {
+	
+	$meta_user_obj = new User;
+	$meta_user = $meta_user_obj->meta_user($_SESSION['meta_token']);
+
+}
+
 // start up messenger so we have access to our errors & alert messages
 $messenger = new Messenger;
 

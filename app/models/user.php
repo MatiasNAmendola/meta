@@ -116,7 +116,22 @@ class User {
 	
 	public function meta_user($token) {
 		
+		if($this->dbh->exists('secure_tokens', array('token' => $token))) {
+			
+			$secure_token = $this->dbh->get_row('secure_tokens', array('token' => $token));
+			
+			$account = $this->dbh->get_row('accounts', array('email' => $secure_token['email']));
+			
+			$meta_user = array(
+				'status'	=> 1,
+				'email'		=> $account['email']
+			);
+			
+		} else {
+			$meta_user = array('status' => 0);
+		}
 		
+		return $meta_user;
 	
 	}
 	
